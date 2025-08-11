@@ -26,3 +26,31 @@ body {
   padding: 10px;
   border-radius: 4px;
 }
+
+.board {
+  display: flex;
+  gap: 10px;
+}
+
+.column {
+  flex: 1;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.task-list {
+  min-height: 100px;
+}
+
+.task-list li {
+  cursor: grab;
+  background: white;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.task-list li:active {
+  cursor: grabbing;
+}

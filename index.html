@@ -12,7 +12,20 @@
       <input type="text" id="task-input" placeholder="Nouvelle tâche..." required>
       <button type="submit">Ajouter</button>
     </form>
-    <ul id="task-list"></ul>
+    <div class="board">
+  <div class="column" id="todo">
+    <h2>À faire</h2>
+    <ul class="task-list" data-column="todo"></ul>
+  </div>
+  <div class="column" id="doing">
+    <h2>En cours</h2>
+    <ul class="task-list" data-column="doing"></ul>
+  </div>
+  <div class="column" id="done">
+    <h2>Terminé</h2>
+    <ul class="task-list" data-column="done"></ul>
+  </div>
+</div>
   </div>
   <script src="assets/js/app.js"></script>
 </body>
