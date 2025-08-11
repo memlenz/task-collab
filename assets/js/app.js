@@ -36,3 +36,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Récupère ou initialise les tâches
+let tasks = JSON.parse(localStorage.getItem('tasks')) || {
+  todo: [],
+  doing: [],
+  done: []
+};
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function renderTasks() {
+  document.querySelectorAll('.task-list').forEach(list => {
+    list.innerHTML = '';
+    const column = list.dataset.column;
+    
+    tasks[column].forEach(taskText => {
+      const li = document.createElement('li');
+      li.textContent = taskText;
+      li.setAttribute('draggable', 'true');
+      li.id = `task-${Date.now()}`;
+      list.appendChild(li);
+    });
+  });
+}
+
+// Modifie l'event listener du formulaire
+document.getElementById('task-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const taskInput = document.getElementById('task-input');
+  
+  if (taskInput.value.trim() === '') return;
+  
+  tasks.todo.push(taskInput.value);
+  saveTasks();
+  renderTasks();
+  
+  taskInput.value = '';
+});
+
+// Au chargement
+document.addEventListener('DOMContentLoaded', renderTasks);
